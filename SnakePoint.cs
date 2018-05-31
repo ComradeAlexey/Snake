@@ -27,13 +27,14 @@ namespace Snake
 
         public void MoveHead(DirectionMove _directionMove)
         {
+
             switch(directionMove)
             {
                 case DirectionMove.up:
-                    y += 1;
+                    y += -1;
                     break;
                 case DirectionMove.down:
-                    y += -1;
+                    y += 1;
                     break;
                 case DirectionMove.left:
                     x += -1;
@@ -50,15 +51,13 @@ namespace Snake
             {
                 case DirectionMove.up:
                     x = prevPoint.x;
-                    y = prevPoint.y+1;
+                    y = prevPoint.y-1;
                     break;
                 case DirectionMove.down:
-                    y += -1;
                     x = prevPoint.x;
-                    y = prevPoint.y - 1;
+                    y = prevPoint.y + 1;
                     break;
                 case DirectionMove.left:
-                    x += -1;
                     x = prevPoint.x - 1;
                     y = prevPoint.y;
                     break;

@@ -8,16 +8,21 @@ namespace Snake
         static public void StartGame()
         {
             WallPointsManager.BuildSceneWalls(0, 0, 79, 79);
-            SnakePointsManager.StartGame(10, 10);
+            SnakePointsManager.StartGame(10, 40);
         }
         static public void Update()
         {
             while (true)
             {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    
+                    SnakePointsManager.MoveController(key);
+                }
                 Thread.Sleep(100);
-                SnakePointsManager.MoveController();
-                Console.Clear();
                 SnakePointsManager.MoveSnake();
+                Console.Clear();
                 WallPointsManager.ShowSceneWalls();
                 SnakePointsManager.ShowSceneSnake();
             }

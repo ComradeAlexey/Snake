@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace Snake
 {
+    public enum DirectionMove
+    {
+        up,
+        down,
+        left,
+        right
+    }
+
     class Program
     {
         static void Main(string[] args)

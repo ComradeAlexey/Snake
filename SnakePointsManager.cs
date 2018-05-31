@@ -28,10 +28,9 @@ namespace Snake
             }
         }
 
-        static public void MoveController()
+        static public void MoveController(ConsoleKeyInfo keyInfo)
         {
-            ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
-            switch(consoleKeyInfo.Key)
+            switch (keyInfo.Key)
             {
                 case ConsoleKey.W:
                     directionMove = DirectionMove.up;
@@ -53,7 +52,10 @@ namespace Snake
             foreach(SnakePoint point in dictionary)
             {
                 if (point.isHead)
+                {
+                    point.directionMove = directionMove;
                     point.MoveHead(directionMove);
+                }
                 point.MovePointToPoint();
             }
         }
