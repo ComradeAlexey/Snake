@@ -12,10 +12,7 @@ namespace Snake
         static List<SnakePoint> dictionary = new List<SnakePoint>();
         static public void StartGame(int x, int y)
         {
-            SnakePoint head = new SnakePoint(x, y)
-            {
-                isHead = true
-            };
+            SnakePoint head = new SnakePoint(x, y, true);
             SnakePoint snakePoint = new SnakePoint(x, y + 1);
         }
         static public void AddInList(SnakePoint thisObject)
@@ -57,7 +54,17 @@ namespace Snake
             {
                 if (point.isHead)
                     point.MoveHead(directionMove);
+                point.MovePointToPoint();
             }
+        }
+
+        static public SnakePoint EndElement(SnakePoint snakePoint)
+        {
+            if(snakePoint.isHead)
+            {
+                return snakePoint;
+            }
+            return dictionary.Last();
         }
     }
 }

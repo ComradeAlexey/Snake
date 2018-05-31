@@ -11,18 +11,13 @@ namespace Snake
         public DirectionMove directionMove;
         public bool isHead;
         public SnakePoint prevPoint;
-        public SnakePoint(int x, int y)
+        public SnakePoint(int x, int y, bool isHEAD = false)
         {
             this.x = x;
             this.y = y;
+            isHead = isHEAD;
+            prevPoint = SnakePointsManager.EndElement(this);
             SnakePointsManager.AddInList(this);
-        }
-        public SnakePoint(int x, int y, SnakePoint prevPoint)
-        {
-            this.x = x;
-            this.y = y;
-            SnakePointsManager.AddInList(this);
-            this.prevPoint = prevPoint;
         }
         public override void ShowPoint()
         {

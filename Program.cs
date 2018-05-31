@@ -10,11 +10,8 @@ namespace Snake
     {
         static void Main(string[] args)
         {
-            WallPointsManager.BuildSceneWalls(0,0,79,79);
-            WallPointsManager.ShowSceneWalls();
-            SnakePointsManager.StartGame(10,10);
-            SnakePointsManager.ShowSceneSnake();
-            Console.ReadKey();
+            Game.StartGame();
+            Game.Update();
         }
     }
 }
