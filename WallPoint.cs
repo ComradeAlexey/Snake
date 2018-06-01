@@ -10,14 +10,14 @@ namespace Snake
     {
         public WallPoint(int x,int y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
             WallPointsManager.AddInList(this);
         }
 
         public override void ShowPoint()
         {
-            Console.SetCursorPosition(x, y);
+            Console.SetCursorPosition(X, Y);
             Console.Write('*');
         }
     }

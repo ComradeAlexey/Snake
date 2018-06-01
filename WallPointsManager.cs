@@ -39,12 +39,16 @@ namespace Snake
                 value.ShowPoint();
             }
         }
-        static public void ShowList()
+        static public bool CheckedList(int x, int y)
         {
             foreach (WallPoint value in dictionary)
             {
-                Console.WriteLine(value.ToString());
+                if(value.X == x && value.Y == y)
+                {
+                    return true;
+                }
             }
+            return false;
         }
     }
 }

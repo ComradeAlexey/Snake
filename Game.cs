@@ -12,7 +12,7 @@ namespace Snake
         }
         static public void Update()
         {
-            while (true)
+            while (!SnakePointsManager.OnCollision())
             {
                 if (Console.KeyAvailable)
                 {

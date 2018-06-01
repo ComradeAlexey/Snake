@@ -14,10 +14,17 @@ namespace Snake
         {
             SnakePoint head = new SnakePoint(x, y, true);
             SnakePoint snakePoint = new SnakePoint(x, y + 1);
+            SnakePoint snakePoint1 = new SnakePoint(x, y + 2);
         }
+
         static public void AddInList(SnakePoint thisObject)
         {
             dictionary.Add(thisObject);
+        }
+
+        static public void AddSnakeElement()
+        {
+            SnakePoint snakePoint = new SnakePoint(dictionary.Last().X, dictionary.Last().Y);
         }
 
         static public void ShowSceneSnake()
@@ -56,7 +63,8 @@ namespace Snake
                     point.directionMove = directionMove;
                     point.MoveHead(directionMove);
                 }
-                point.MovePointToPoint();
+                else 
+                    point.MovePointToPoint();
             }
         }
 
@@ -67,6 +75,16 @@ namespace Snake
                 return snakePoint;
             }
             return dictionary.Last();
+        }
+
+        static public bool OnCollision()
+        {
+            foreach(SnakePoint value in dictionary)
+            {
+                if(WallPointsManager.CheckedList(value.X,value.Y))
+                    return true;
+            }
+            return false;
         }
     }
 }
