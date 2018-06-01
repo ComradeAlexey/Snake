@@ -11,11 +11,14 @@ namespace Snake
         public DirectionMove directionMove;
         public bool isHead;
         public SnakePoint prevPoint;
-        public SnakePoint(int x, int y, bool isHEAD = false)
+        public int oX, oY;
+        public SnakePoint(int x, int y, bool isHead = false, int oX)
         {
             this.x = x;
             this.y = y;
-            isHead = isHEAD;
+            oX = x;
+            oY = y;
+            this.isHead = isHead;
             prevPoint = SnakePointsManager.EndElement(this);
             SnakePointsManager.AddInList(this);
         }
@@ -47,25 +50,29 @@ namespace Snake
 
         public void MovePointToPoint()
         {
-            switch (directionMove)
-            {
-                case DirectionMove.up:
-                    x = prevPoint.x;
-                    y = prevPoint.y-1;
-                    break;
-                case DirectionMove.down:
-                    x = prevPoint.x;
-                    y = prevPoint.y + 1;
-                    break;
-                case DirectionMove.left:
-                    x = prevPoint.x - 1;
-                    y = prevPoint.y;
-                    break;
-                case DirectionMove.right:
-                    x = prevPoint.x+1;
-                    y = prevPoint.y;
-                    break;
-            }
+            oX = x;
+            oY = y;
+            x = prevPoint.oX;
+            y = prevPoint.oY;
+            //switch (directionMove)
+            //{
+            //    case DirectionMove.up:
+            //        x = prevPoint.oX;
+            //        y = prevPoint.oY;
+            //        break;
+            //    case DirectionMove.down:
+            //        x = prevPoint.x;
+            //        y = prevPoint.y;
+            //        break;
+            //    case DirectionMove.left:
+            //        x = prevPoint.x;
+            //        y = prevPoint.y;
+            //        break;
+            //    case DirectionMove.right:
+            //        x = prevPoint.x;
+            //        y = prevPoint.y;
+            //        break;
+            //}
         }
     }
 }
