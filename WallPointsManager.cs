@@ -8,13 +8,20 @@ namespace Snake
 {
     static class WallPointsManager
     {
+        static int width, height;
         static List<WallPoint> dictionary = new List<WallPoint>();
+
+        public static int Width { get => width; set => width = value; }
+        public static int Height { get => height; set => height = value; }
+
         static public void AddInList(WallPoint thisObject)
         {
             dictionary.Add(thisObject);
         }
         static public void BuildSceneWalls(int x0,int y0, int width,int height)
         {
+            Width = width;
+            Height = height;
             for(int x = x0;x < x0 + width ; x++ )
             {
                 WallPoint wallPoint = new WallPoint(x, y0);

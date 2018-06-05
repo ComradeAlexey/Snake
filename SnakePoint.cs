@@ -26,8 +26,15 @@ namespace Snake
             Console.Write('*');
         }
 
+        public void HidePoint()
+        {
+            Console.SetCursorPosition(X, Y);
+            Console.Write(' ');
+        }
+
         public void MoveHead(DirectionMove _directionMove)
         {
+            HidePoint();
             oX = X;
             oY = Y;
             switch (directionMove)
@@ -45,33 +52,17 @@ namespace Snake
                     X += 1;
                     break;
             }
+            ShowPoint();
         }
 
         public void MovePointToPoint()
         {
+            HidePoint();
             oX = X;
             oY = Y;
             X = prevPoint.oX;
             Y = prevPoint.oY;
-            //switch (directionMove)
-            //{
-            //    case DirectionMove.up:
-            //        x = prevPoint.oX;
-            //        y = prevPoint.oY;
-            //        break;
-            //    case DirectionMove.down:
-            //        x = prevPoint.x;
-            //        y = prevPoint.y;
-            //        break;
-            //    case DirectionMove.left:
-            //        x = prevPoint.x;
-            //        y = prevPoint.y;
-            //        break;
-            //    case DirectionMove.right:
-            //        x = prevPoint.x;
-            //        y = prevPoint.y;
-            //        break;
-            //}
+            ShowPoint();
         }
     }
 }

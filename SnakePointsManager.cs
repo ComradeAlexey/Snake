@@ -10,11 +10,12 @@ namespace Snake
     {
         static DirectionMove directionMove;
         static List<SnakePoint> dictionary = new List<SnakePoint>();
+
+
         static public void StartGame(int x, int y)
         {
             SnakePoint head = new SnakePoint(x, y, true);
-            SnakePoint snakePoint = new SnakePoint(x, y + 1);
-            SnakePoint snakePoint1 = new SnakePoint(x, y + 2);
+            AddSnakeElement();
         }
 
         static public void AddInList(SnakePoint thisObject)
@@ -24,7 +25,29 @@ namespace Snake
 
         static public void AddSnakeElement()
         {
-            SnakePoint snakePoint = new SnakePoint(dictionary.Last().X, dictionary.Last().Y);
+            switch(directionMove)
+            {
+                case DirectionMove.up:
+                    {
+                        SnakePoint snakePoint1 = new SnakePoint(dictionary.Last().X, dictionary.Last().Y - 1);
+                    }
+                    break;
+                case DirectionMove.down:
+                    {
+                        SnakePoint snakePoint1 = new SnakePoint(dictionary.Last().X, dictionary.Last().Y + 1);
+                    }
+                    break;
+                case DirectionMove.left:
+                    {
+                        SnakePoint snakePoint1 = new SnakePoint(dictionary.Last().X - 1, dictionary.Last().Y);
+                    }
+                    break;
+                case DirectionMove.right:
+                    {
+                        SnakePoint snakePoint1 = new SnakePoint(dictionary.Last().X + 1, dictionary.Last().Y);
+                    }
+                    break;
+            }
         }
 
         static public void ShowSceneSnake()
@@ -77,12 +100,29 @@ namespace Snake
             return dictionary.Last();
         }
 
+        static public SnakePoint HeadElement()
+        {
+            return dictionary.First();
+        }
+
         static public bool OnCollision()
         {
             foreach(SnakePoint value in dictionary)
             {
                 if(WallPointsManager.CheckedList(value.X,value.Y))
                     return true;
+            }
+            return false;
+        }
+
+        static public bool CheckedList(int x, int y)
+        {
+            foreach (SnakePoint value in dictionary)
+            {
+                if (value.X == x && value.Y == y)
+                {
+                    return true;
+                }
             }
             return false;
         }
