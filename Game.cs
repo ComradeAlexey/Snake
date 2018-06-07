@@ -1,11 +1,26 @@
 ﻿using System;
 using System.Threading;
-
 namespace Snake
 {
     class Game
     {
-        static public int updateTime = 200;
+        private static int updateTime = 200;
+
+        public static int UpdateTime
+        {
+            get
+            {
+                return updateTime;
+            }
+            set
+            {
+                if(updateTime >= 55)
+                {
+                    updateTime -= value;
+                }
+            }
+        }
+
         static public void StartGame()
         {
             WallPointsManager.BuildSceneWalls(0, 0, 79, 79);
@@ -26,7 +41,7 @@ namespace Snake
                     ConsoleKeyInfo key = Console.ReadKey(true);
                     SnakePointsManager.MoveController(key);
                 }
-                Thread.Sleep(updateTime);
+                Thread.Sleep(UpdateTime);
                 Console.ForegroundColor = ConsoleColor.Red;
                 SnakePointsManager.EatingFruit();
                 SnakePointsManager.MoveSnake();

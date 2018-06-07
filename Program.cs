@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Snake
+﻿namespace Snake
 {
     public enum DirectionMove
     {
@@ -23,3 +17,4 @@ namespace Snake
         }
     }
 }
+//Спасибо https://vk.com/mom.lynx за моральную поддержку 
