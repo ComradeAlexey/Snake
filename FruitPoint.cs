@@ -10,8 +10,8 @@ namespace Snake
     {
         public FruitPoint(int x, int y)
         {
-            this.X = x;
-            this.Y = y;
+            X = x;
+            Y = y;
             FruitPointManager.AddInList(this);
         }
 

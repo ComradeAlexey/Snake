@@ -14,11 +14,11 @@ namespace Snake
         public static int Width { get => width; set => width = value; }
         public static int Height { get => height; set => height = value; }
 
-        static public void AddInList(WallPoint thisObject)
+        public static void AddInList(WallPoint thisObject)
         {
             dictionary.Add(thisObject);
         }
-        static public void BuildSceneWalls(int x0,int y0, int width,int height)
+        public static void BuildSceneWalls(int x0,int y0, int width,int height)
         {
             Width = width;
             Height = height;
@@ -39,14 +39,14 @@ namespace Snake
                 WallPoint wallPoint = new WallPoint(x0 + width - 1, y);
             }
         }
-        static public void ShowSceneWalls()
+        public static void ShowSceneWalls()
         {
             foreach (WallPoint value in dictionary)
             {
                 value.ShowPoint();
             }
         }
-        static public bool CheckedList(int x, int y)
+        public static bool CheckedList(int x, int y)
         {
             foreach (WallPoint value in dictionary)
             {
