@@ -152,6 +152,8 @@ namespace Snake
                 FruitPointManager.GenerateFruits();
                 FruitPointManager.ShowSceneFruit();
                 AddSnakeElement();
+                Game.UpdateTime -= 10;
+                Game.numFruitsEat++;
             }
         }
         static public bool CheckedList(int x, int y)
